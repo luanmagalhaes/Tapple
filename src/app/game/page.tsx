@@ -10,7 +10,7 @@ import type { Language } from "@/data/categories";
 
 const DISCO = ["#a855f7", "#ec4899", "#f97316", "#10b981", "#3b82f6", "#facc15"];
 const BG_IMAGES = ["/karina.png", "/karina2.png", "/karina3.png", "/iguana1.png", "/karina4.png"];
-const TILE_COUNT = 80;
+const TILE_COUNT = 20;
 
 function MiniWheel({ players, onSelect }: { players: Player[]; onSelect: (id: number) => void }) {
   const n = players.length;
@@ -528,8 +528,8 @@ function GameContent() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",
-            gridAutoRows: "200px",
+            gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+            gridAutoRows: "260px",
             width: "100%",
             height: "100%",
             minHeight: "100vh",
