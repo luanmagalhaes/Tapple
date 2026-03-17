@@ -544,7 +544,7 @@ function GameContent() {
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.3 }}
         onClick={() => router.push(`/?lang=${lang}`)}
-        className="absolute left-6 top-6 z-10 flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/50 backdrop-blur-sm transition-all hover:border-white/20 hover:text-white/80"
+        className="absolute left-6 top-6 z-10 flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-7 py-4 text-base text-white/50 backdrop-blur-sm transition-all hover:border-white/20 hover:text-white/80"
       >
         ← {lang === "pt" ? "Voltar" : "Back"}
       </motion.button>
@@ -554,10 +554,10 @@ function GameContent() {
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.3 }}
         onClick={() => players.length > 0 ? setShowManage(true) : setShowSetup(true)}
-        className="absolute right-6 top-6 z-10 text-4xl transition-transform hover:scale-110 active:scale-95"
-        title={lang === "pt" ? "Pontuação" : "Score"}
+        className="absolute right-6 top-6 z-10 flex flex-col items-center gap-0.5 transition-transform hover:scale-110 active:scale-95"
       >
-        🏆
+        <span className="text-4xl">🏆</span>
+        <span className="text-xs font-semibold text-white/50">{lang === "pt" ? "Pontuação" : "Score"}</span>
       </motion.button>
 
       <motion.div
