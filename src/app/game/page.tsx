@@ -10,7 +10,6 @@ import type { Language } from "@/data/categories";
 
 const DISCO = ["#a855f7", "#ec4899", "#f97316", "#10b981", "#3b82f6", "#facc15"];
 const BG_IMAGES = ["/karina.png", "/karina2.png", "/karina3.png", "/iguana1.png", "/karina4.png"];
-const TILE_COUNT = 20;
 
 function MiniWheel({ players, onSelect }: { players: Player[]; onSelect: (id: number) => void }) {
   const n = players.length;
@@ -459,29 +458,6 @@ function GameContent() {
   const [winner, setWinner] = useState<Player | null>(null);
   const [gamePhase, setGamePhase] = useState<"playing" | "pacman" | "win">("playing");
 
-  const [bgOrder, setBgOrder] = useState<number[]>(() =>
-    Array.from({ length: TILE_COUNT }, (_, i) => i % BG_IMAGES.length)
-  );
-  const [bgFading, setBgFading] = useState(false);
-
-  useEffect(() => {
-    const t = setInterval(() => {
-      setBgFading(true);
-      setTimeout(() => {
-        setBgOrder((prev) => {
-          const next = [...prev];
-          for (let i = next.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [next[i], next[j]] = [next[j], next[i]];
-          }
-          return next;
-        });
-        setBgFading(false);
-      }, 120);
-    }, 10000);
-    return () => clearInterval(t);
-  }, []);
-
   useEffect(() => {
     try {
       const saved = localStorage.getItem("tapple_players");
@@ -535,18 +511,12 @@ function GameContent() {
             minHeight: "100vh",
           }}
         >
-          {bgOrder.map((imgIdx, i) => (
+          {BG_IMAGES.map((src, i) => (
             <img
               key={i}
-              src={BG_IMAGES[imgIdx]}
+              src={src}
               alt=""
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                opacity: bgFading ? 0 : 1,
-                transition: "opacity 0.12s",
-              }}
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
           ))}
         </div>
