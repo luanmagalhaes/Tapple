@@ -544,7 +544,8 @@ function GameContent() {
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.3 }}
         onClick={() => router.push(`/?lang=${lang}`)}
-        className="absolute left-6 top-6 z-10 flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-7 py-4 text-base text-white/50 backdrop-blur-sm transition-all hover:border-white/20 hover:text-white/80"
+        className="absolute left-6 top-6 z-10 flex items-center gap-2 rounded-full border border-white/10 bg-white/5 text-base text-white/50 backdrop-blur-sm transition-all hover:border-white/20 hover:text-white/80"
+        style={{ padding: "14px 28px" }}
       >
         ← {lang === "pt" ? "Voltar" : "Back"}
       </motion.button>

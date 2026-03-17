@@ -414,7 +414,8 @@ function HomeContent() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -10 }}
               onClick={() => setSelectedLang(null)}
-              className="absolute left-6 top-6 z-10 flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/50 backdrop-blur-sm transition-all hover:border-white/20 hover:text-white/80"
+              className="absolute left-6 top-6 z-10 flex items-center gap-2 rounded-full border border-white/10 bg-white/5 text-sm text-white/50 backdrop-blur-sm transition-all hover:border-white/20 hover:text-white/80"
+              style={{ padding: "14px 28px" }}
             >
               ← {selectedLang === "pt" ? "Voltar" : "Back"}
             </motion.button>
