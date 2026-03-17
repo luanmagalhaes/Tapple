@@ -79,8 +79,8 @@ export default function SpinWheel({ language, mode }: SpinWheelProps) {
     setRevealCard(false);
     setShowSlot(true);
 
-    const audio = new Audio("/gemido.mp3");
-    audio.play().catch(() => {});
+    const audio = mode === "adult" ? new Audio("/gemido.mp3") : null;
+    audio?.play().catch(() => {});
 
     const chosen = getRandomCategory();
     const sequence = buildSlotSequence(chosen);
@@ -88,8 +88,8 @@ export default function SpinWheel({ language, mode }: SpinWheelProps) {
 
     await new Promise((r) => setTimeout(r, 2600));
 
-    audio.pause();
-    audio.currentTime = 0;
+    audio?.pause();
+    if (audio) audio.currentTime = 0;
 
     setShowSlot(false);
     setResult(chosen);

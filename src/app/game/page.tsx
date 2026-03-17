@@ -9,7 +9,7 @@ import PlayerSetup, { type Player, WIN_SCORE } from "@/components/ScoreOverlay";
 import type { Language } from "@/data/categories";
 
 const DISCO = ["#a855f7", "#ec4899", "#f97316", "#10b981", "#3b82f6", "#facc15"];
-const BG_IMAGES = ["/karina.png", "/karina2.png", "/karina3.png", "/iguana1.png"];
+const BG_IMAGES = ["/karina.png", "/karina2.png", "/karina3.png", "/iguana1.png", "/karina4.png"];
 const TILE_COUNT = 80;
 
 function MiniWheel({ players, onSelect }: { players: Player[]; onSelect: (id: number) => void }) {
