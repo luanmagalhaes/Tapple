@@ -511,10 +511,10 @@ function GameContent() {
             minHeight: "100vh",
           }}
         >
-          {BG_IMAGES.map((src, i) => (
+          {Array.from({ length: 40 }, (_, i) => (
             <img
               key={i}
-              src={src}
+              src={BG_IMAGES[i % BG_IMAGES.length]}
               alt=""
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
