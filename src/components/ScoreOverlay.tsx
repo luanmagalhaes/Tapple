@@ -26,11 +26,9 @@ export default function PlayerSetup({
   onClose: () => void;
 }) {
   const [step, setStep] = useState<"count" | "names">("count");
-  const [numPlayers, setNumPlayers] = useState(0);
   const [names, setNames] = useState<string[]>([]);
 
   const handleCountSelect = (n: number) => {
-    setNumPlayers(n);
     setNames(
       Array.from({ length: n }, (_, i) =>
         lang === "pt" ? `Jogador ${i + 1}` : `Player ${i + 1}`
@@ -107,16 +105,17 @@ export default function PlayerSetup({
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
-            className="flex w-full max-w-sm flex-col items-center gap-6 text-center"
+            className="flex w-full max-w-sm flex-col items-center gap-4 text-center"
+            style={{ maxHeight: "90vh" }}
           >
-            <h2 className="text-2xl font-black text-white">
+            <h2 className="shrink-0 text-2xl font-black text-white">
               {lang === "pt" ? "Nomes dos jogadores" : "Player names"}
             </h2>
-            <div className="flex w-full flex-col gap-3">
+            <div className="flex w-full flex-col gap-3 overflow-y-auto px-1" style={{ maxHeight: "55vh" }}>
               {names.map((name, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <div
-                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-base font-black text-white"
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-black text-white"
                     style={{ background: PLAYER_COLORS[i] }}
                   >
                     {name.trim() ? name.trim()[0].toUpperCase() : i + 1}
@@ -131,7 +130,7 @@ export default function PlayerSetup({
                       setNames(next);
                     }}
                     className="flex-1 rounded-xl border border-white/10 bg-white/5 text-base text-white outline-none focus:border-white/30"
-                    style={{ caretColor: PLAYER_COLORS[i], padding: "14px 20px" }}
+                    style={{ caretColor: PLAYER_COLORS[i], padding: "12px 18px" }}
                     placeholder={lang === "pt" ? `Jogador ${i + 1}` : `Player ${i + 1}`}
                   />
                 </div>
@@ -141,7 +140,7 @@ export default function PlayerSetup({
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleStart}
-              className="w-full rounded-2xl py-4 text-lg font-black text-white"
+              className="w-full shrink-0 rounded-2xl py-4 text-lg font-black text-white"
               style={{
                 background: "linear-gradient(135deg, #a855f7, #ec4899)",
                 boxShadow: "0 4px 20px rgba(168,85,247,0.5)",
@@ -151,7 +150,7 @@ export default function PlayerSetup({
             </motion.button>
             <button
               onClick={() => setStep("count")}
-              className="text-sm text-white/30 hover:text-white/60"
+              className="shrink-0 text-sm text-white/30 hover:text-white/60"
             >
               ← {lang === "pt" ? "Voltar" : "Back"}
             </button>
