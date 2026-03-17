@@ -340,7 +340,7 @@ function HomeContent() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.35 }}
-              className="flex flex-col items-center gap-6 sm:flex-row sm:gap-8"
+              className="flex flex-col items-center gap-4 sm:flex-row sm:gap-8"
             >
               {modes[selectedLang].map((m, i) => (
                 <motion.button
@@ -355,7 +355,7 @@ function HomeContent() {
                   whileHover={{ scale: 1.06, y: -6 }}
                   whileTap={{ scale: 0.96 }}
                   onClick={() => handleModeSelect(m.code)}
-                  className={`relative flex w-72 cursor-pointer flex-col items-center gap-4 rounded-3xl border ${m.border} p-6 backdrop-blur-md transition-all duration-300 sm:w-64 sm:p-8`}
+                  className={`relative flex w-72 cursor-pointer flex-col items-center justify-center gap-3 rounded-3xl border ${m.border} p-4 sm:p-8 backdrop-blur-md transition-all duration-300`}
                   style={{
                     background: "rgba(255,255,255,0.05)",
                     boxShadow: `0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1)`,
@@ -368,35 +368,24 @@ function HomeContent() {
                     }}
                   />
                   {m.image ? (
-                    <div
-                      className="w-full overflow-hidden rounded-2xl flex items-center justify-center"
-                      style={{ height: 280 }}
-                    >
-                      <img
-                        src={m.image}
-                        alt={m.label}
-                        className="h-full w-full object-contain"
-                      />
-                    </div>
+                    <img
+                      src={m.image}
+                      alt={m.label}
+                      className="w-full rounded-2xl object-contain"
+                      style={{ maxHeight: 180 }}
+                    />
                   ) : (
                     <div className="flex flex-col items-center gap-2">
-                      <span className="text-6xl">{m.emoji}</span>
-                      {m.sign && (
-                        <img
-                          src={m.sign}
-                          alt="sign"
-                          className="h-16 w-16 object-contain"
-                        />
-                      )}
+                      <span className="text-5xl">{m.emoji}</span>
                     </div>
                   )}
                   <div className="text-center">
                     <p
-                      className={`text-2xl font-black bg-gradient-to-r ${m.gradient} bg-clip-text text-transparent`}
+                      className={`text-xl font-black bg-gradient-to-r ${m.gradient} bg-clip-text text-transparent`}
                     >
                       {m.label}
                     </p>
-                    <p className="mt-1 text-base text-white/40">{m.subtitle}</p>
+                    <p className="mt-0.5 text-xs sm:text-base text-white/40">{m.subtitle}</p>
                   </div>
                   <div
                     className={`h-1 w-16 rounded-full bg-gradient-to-r ${m.gradient}`}
